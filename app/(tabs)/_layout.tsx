@@ -38,10 +38,11 @@ export default function TabLayout() {
               onPress={() => router.push("/search")}
             >
               <TextInput
-              placeholder="Search Stocks..."
-              disabled
-              left={<TextInput.Icon icon = {"magnify"} />}
-              onPressIn={() => router.push("/search")} />
+                placeholder="Search Stocks..."
+                disabled
+                left={<TextInput.Icon icon={"magnify"} />}
+                onPressIn={() => router.push("/search")}
+              />
             </Pressable>
           ),
         }}
