@@ -1,8 +1,4 @@
-import {
-  StyleSheet,
-  View,
-  FlatList,
-} from "react-native";
+import { StyleSheet, View, FlatList } from "react-native";
 import { Text } from "react-native-paper";
 import { stocks } from "@/data";
 import { StockCard } from "@/components/StockCard";
@@ -17,7 +13,14 @@ export default function HomeScreen() {
         keyExtractor={(item) => item.ticker}
         data={stocks}
         renderItem={({ item }) => (
-          <StockCard companyName={item.companyName} image={item.image} price={item.price} priceChange={item.priceChange} priceChangePercentage={item.priceChangePercentage} ticker={item.ticker} />
+          <StockCard
+            companyName={item.companyName}
+            image={item.image}
+            price={item.price}
+            priceChange={item.priceChange}
+            priceChangePercentage={item.priceChangePercentage}
+            ticker={item.ticker}
+          />
         )}
       />
     </View>
@@ -32,5 +35,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginLeft: 5,
     marginBottom: 5,
-  }
+  },
 });
