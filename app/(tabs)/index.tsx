@@ -9,9 +9,10 @@ import { Text } from "react-native-paper";
 import { router } from "expo-router";
 import { stocks } from "@/data";
 import { Image } from "expo-image";
+import { formatCurrency } from "@/utils/formatCurrenecy";
 
 export default function HomeScreen() {
-  const {width} = useWindowDimensions();
+  const { width } = useWindowDimensions();
   return (
     <View style={styles.homeContainer}>
       <Text variant="titleLarge" style={styles.titleText}>
@@ -30,15 +31,37 @@ export default function HomeScreen() {
               style={styles.companyLogo}
               contentFit="contain"
             />
-            <View style={{flexDirection: 'row', justifyContent:'space-between',width: width - 75, paddingLeft: 15}}>
+            <View
+              style={{
+                flexDirection: "row",
+                justifyContent: "space-between",
+                width: width - 75,
+                paddingLeft: 15,
+              }}
+            >
               <View>
-                <Text variant="titleMedium" style={styles.textFontWeight}>{item.ticker}</Text>
-                <Text>{item.companyName}</Text>
+                <Text variant="titleMedium" style={styles.textFontWeight}>
+                  {item.ticker}
+                </Text>
+                <Text variant="labelMedium">{item.companyName}</Text>
               </View>
-              <View>
-                <Text variant="titleMedium" style={styles.textFontWeight}>{item.price}</Text>
-                <Text>
-                  {item.priceChange} {item.priceChangePercentage}
+              <View style={{alignItems:"flex-end"}}>
+                <Text variant="titleMedium" style={styles.textFontWeight}>
+                  {formatCurrency(item.price)}
+                </Text>
+                <Text
+                  variant="labelMedium"
+                  style={{
+                    color:
+                      item.priceChange < 0
+                        ? "red"
+                        : item.priceChange > 0
+                        ? "lighgreen"
+                        : "auto",
+                  }}
+                >
+                  {formatCurrency(item.priceChange)}{"  "}
+                  {item.priceChangePercentage.toFixed(2)}%
                 </Text>
               </View>
             </View>
@@ -69,7 +92,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     height: 60,
   },
-  textFontWeight:{
-    fontWeight: "bold"
-  }
+  textFontWeight: {
+    fontWeight: "bold",
+  },
 });
