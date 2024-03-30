@@ -1,29 +1,18 @@
 import { useLocalSearchParams } from "expo-router";
-import { StyleSheet, View } from "react-native";
+import { View, SafeAreaView } from "react-native";
 import { Text } from "react-native-paper";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 export default function TickerScreen() {
   const { ticker } = useLocalSearchParams();
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={{flex:1, marginHorizontal: 20, marginBottom:10}} >
+      <View>
+        <MaterialCommunityIcons  name="chevron-left" color={"white"} size={40} />
+        <MaterialCommunityIcons  name="star-outline" color={"white"} size={40} />
+      </View>
       <Text>{ticker}</Text>
-    </View>
+    </SafeAreaView>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
-  },
-});
