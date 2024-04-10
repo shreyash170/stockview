@@ -9,3 +9,15 @@ export const searchStocks = (text: string) => {
       i.companyName.match(new RegExp(text, "i"))
   );
 };
+
+export const selectStocks = (text: string) => {
+  const stock = stocks.filter(i => i.ticker === text)
+  if (stock) return stock[0];
+  return null;
+};
+
+export const selectStocksPrices = (text: string) => {
+  const stock = stocks.filter(i => i.ticker === text)
+  if (stock) return stock[0];
+  return null;
+}
