@@ -1,4 +1,4 @@
-import { stocks } from "@/data";
+import { stocks, stockPrices } from "@/data";
 
 export const searchStocks = (text: string) => {
   if (!text) return [];
@@ -17,7 +17,7 @@ export const selectStocks = (text: string) => {
 };
 
 export const selectStocksPrices = (text: string) => {
-  const stock = stocks.filter(i => i.ticker === text)
-  if (stock) return stock[0];
+  const stock = stockPrices.filter(i => i.ticker === text)
+  if (stock) return stock[0].prices;
   return null;
 }
